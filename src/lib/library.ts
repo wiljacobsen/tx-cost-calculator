@@ -10,16 +10,12 @@ const libraries: Record<LibraryVersion, Library> = {
 };
 
 async function sha256(text: string): Promise<string> {
-  if (typeof globalThis.crypto?.subtle?.digest === "function") {
-    const buf = new TextEncoder().encode(text);
-    const hash = await globalThis.crypto.subtle.digest("SHA-256", buf);
-    return Array.from(new Uint8Array(hash))
-      .map((b) => b.toString(16).padStart(2, "0"))
-      .join("");
-  }
-  // Node fallback (tests)
-  const { createHash } = await import("node:crypto");
-  return createHash("sha256").update(text).digest("hex");
+  // Browser + JSDOM (Vitest default) both expose crypto.subtle; Node 20+ too.
+  const buf = new TextEncoder().encode(text);
+  const hash = await globalThis.crypto.subtle.digest("SHA-256", buf);
+  return Array.from(new Uint8Array(hash))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
 }
 
 /**
