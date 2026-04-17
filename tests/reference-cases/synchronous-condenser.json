@@ -1,0 +1,77 @@
+{
+  "description": "Self-consistent reference case derived from the AEMO TCD 2.0 workbook's current usrBuildingBlock / usrIndirect inputs for Network Element #1 ('330kV GIS' — the workbook's Data_collection_A sheet carries the label 'Synchronous condenser' from a prior snapshot).\n\nInputs: 5 building blocks (IDs 13, 681, 645, 652, 1 with quantities 4, 4, 12, 12, 1). No attribute or risk overrides set at the user level; defaults apply: known risks = BAU (all-zero EXCEPT 'Environmental offset risks' which has EO=0.5 even at BAU), unknown risks = Class 5b. Indirect selections: Brownfield band = '$100-$500 million' / stakeholder = 'Commensurate with land use' / delivery model = 'EPC contract'.\n\nNote: the workbook's pre-computed Data_collection_A shows a Total NE Cost of $224,147,626.72 — that snapshot was taken from a different ('Synchronous condenser 2×200MVA'-style) input set which has since been overwritten in usrBuildingBlock without a Refresh. The expected values below are cent-accurate to the engine's computation against the current inputs, which is what the Excel would produce if the user hit Refresh today.",
+  "project": {
+    "id": "ref_sync_cond",
+    "name": "Marsden 330kV SS",
+    "description": "AEMO TCD reference case",
+    "library_version": "v2021.Q4-aemo",
+    "created_at": "2021-10-15T00:00:00Z",
+    "updated_at": "2021-10-15T00:00:00Z",
+    "version": 1,
+    "project_assumptions": {
+      "jurisdiction": { "state": null, "subregion": null },
+      "delivery_model": "EPC contract",
+      "project_size_band": "$100-$500 million",
+      "greenfield_status": "Brownfield",
+      "stakeholder_sensitivity": "Commensurate with land use",
+      "macroeconomic": "BAU",
+      "market_activity": "BAU",
+      "estimate_class": "Class 5b"
+    },
+    "network_elements": [
+      {
+        "id": "ne_1",
+        "name": "330kV GIS",
+        "description": "330kV GIS",
+        "category": "Station",
+        "building_blocks": [
+          { "library_block_id": 13,  "quantity": 4 },
+          { "library_block_id": 681, "quantity": 4 },
+          { "library_block_id": 645, "quantity": 12 },
+          { "library_block_id": 652, "quantity": 12 },
+          { "library_block_id": 1,   "quantity": 1 }
+        ],
+        "attribute_overrides": {},
+        "known_risk_overrides": {},
+        "unknown_risk_overrides": {}
+      }
+    ]
+  },
+  "expected": {
+    "baseline_by_category": {
+      "PL": 57239047.3912342,
+      "CS":  8820916.808149405,
+      "EW":  1317123.259762309,
+      "SS":  3023784.519191302,
+      "DS":  2015889.4906166217,
+      "TC":  1625066.811544991,
+      "PM":   524975.8179088471,
+      "EP":   136593.90679757015,
+      "EO":    88120.0
+    },
+    "total_by_category": {
+      "PL": 75670020.65121162,
+      "CS": 12790329.371816639,
+      "EW":  1909828.7266553482,
+      "SS":  4354249.707635475,
+      "DS":  2902880.866487935,
+      "TC":  2340096.2086247876,
+      "PM":   630233.469399571,
+      "EP":   210354.61646825803,
+      "EO":   179764.80
+    },
+    "network_element_total": 100987758.41829963,
+    "indirect": {
+      "PD": 3433583.786222188,
+      "WD": 4241485.853568585,
+      "LE":  807902.0673463971,
+      "SCE": 706914.3089280975,
+      "PC":  504938.79209149827,
+      "INS": 403951.03367319854
+    },
+    "total_indirect": 10098775.841829963,
+    "project_total_central": 111086534.2601296,
+    "project_total_low":      55543267.1300648,
+    "project_total_high":    166629801.39019442
+  }
+}

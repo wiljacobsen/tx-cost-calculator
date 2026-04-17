@@ -1,0 +1,14 @@
+{
+  "library_version": "v2021.Q4-aemo",
+  "source_file": "Transmission Cost Database 2.0.xlsb",
+  "currency_year": 2021,
+  "currency": "AUD",
+  "extracted_at": "2026-04-17T03:05:59.657846+00:00",
+  "row_counts": {
+    "building_blocks.csv": 998,
+    "adjustments.csv": 128,
+    "risks.csv": 147,
+    "indirect_costs.csv": 23
+  },
+  "source_description": "AEMO Transmission Cost Database 2.0 \u2014 Cost data release 4-0 dated 44995 (2023-03-04); tool version 15-10-2021."
+}
